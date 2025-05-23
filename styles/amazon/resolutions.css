@@ -1,0 +1,13 @@
+@media (max-width: 600px) {
+    .header{
+        padding: 0 !important;
+    }
+    .middle-section {
+        width: 40%;
+    }
+    .input-product-name {
+        max-width: 200px;
+        font-size: 12px;
+        color: deeppink;
+    }
+}

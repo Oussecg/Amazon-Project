@@ -2,13 +2,38 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Amazon Project</title>
+    <link rel="stylesheet" href="styles/amazon/general.css">
+    <link rel="stylesheet" href="styles/amazon/resolutions.css">
+    <link rel="stylesheet" href="styles/amazon/header.css">
     <link rel="stylesheet" href="styles/amazon/body.css">
 </head>
 <body>
-    <header></header>
-    <main></main>
+    <header class="header">
+        <div class="left-section">
+            <a href="amazon.html" class="header-logo">
+                <img src="images/amazon-logo-white.png" alt="Amazon Logo">
+            </a>
+        </div>
+
+        <div class="middle-section">
+            <input class="input-product-name" type="text" placeholder="Search a product here 🔻🔻🔻">
+            <button class="search-button">Search</button>
+        </div>
+
+        <div class="right-section">
+            <a href="checkout.html">
+                <div class="cart-image-container">
+                    <span class="cart-quantity">0</span>
+                    <img src="images/icons/cart-icon.png" alt="Cart Icon" class="cart-icon">
+                </div>
+            </a>
+        </div>
+    </header>
+    <main class="main"></main>
     <footer></footer>
-    <script src=""></script>
+    <script src="scripts/amazon/resolution.js"></script>
+    <script src="scripts/amazon/amazon.js" type="module"></script>
 </body>
 </html>

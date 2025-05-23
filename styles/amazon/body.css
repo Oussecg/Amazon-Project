@@ -1,1 +1,82 @@
-he
+.main{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)) ;
+    margin-top: 50px;
+}
+
+.product-container{
+    display: flex;
+    flex-direction: column;
+    border-bottom: 1px solid lightgrey;
+    border-right: 1px solid lightgrey;
+    padding: 10px;
+}
+
+.product-image-container{
+    height: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.product-image{
+    object-fit: cover;
+    width: 100px;
+}
+
+.product-name{
+    margin-bottom: 5px;
+    font-size: 10px;
+    font-weight: 500;
+}
+
+.product-rating-container{
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    gap: 5px;
+}
+
+.product-rating-image{
+    width: 100px;
+}
+
+.product-rating-count{
+    color: blue;
+    font: 12px bold;
+}
+
+.product-price{
+    margin-bottom: 10px;
+    font-size: 12px;
+    font-weight: bolder;
+}
+
+.product-size{
+    color: rgb(33, 33, 33);
+    background-color: rgb(240, 240, 240);
+    border: 1px solid rgb(213, 217, 217);
+    border-radius: 8px;
+    padding: 3px 5px;
+    font-size: 15px;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(213, 217, 217, 0.5);
+}
+
+.added-container{
+    color: rgb(6, 125, 98);
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+    opacity: 0;
+}
+
+.add-button{
+    background-color: yellow;
+    color: black;
+    padding: 4px 10px;
+    border: none;
+    border-radius: 25px;
+}
