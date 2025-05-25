@@ -2,9 +2,10 @@ import {products} from "../../data/products.js";
 import {cart} from "../../data/cart.js";
 import {checkItemPresence, getQuantityFromSelect, searchName, showElement, updateLabelQuantity} from "./functions.js";
 
+const main = document.querySelector(".main");
 updateLabelQuantity(cart);
 products.forEach(product => {
-    document.querySelector(".main").innerHTML +=
+    main.innerHTML +=
     `<div class="product-container" data-product-name="${product.name}">
         <div class="product-image-container">
             <img src="../../${product.image}" alt="${product.name}" class="product-image">
@@ -37,23 +38,24 @@ products.forEach(product => {
 
 document.querySelectorAll(".add-button").forEach(button => {
     button.addEventListener("click", () => {
-        if (!checkItemPresence(cart, button.dataset.productId)){
-            products.forEach(product => {
-                if (product.id === button.dataset.productId) {
-                    cart.push(
-                        {
-                            quantity: getQuantityFromSelect(button.dataset.productId),
-                            id: product.id
-                        }
-                    )
+        let product = products.find(product => product.id === button.dataset.productId)
+        if (! checkItemPresence(cart, button.dataset.productId)){
+            cart.push(
+                {
+                    quantity: getQuantityFromSelect(button.dataset.productId),
+                    id: product.id
                 }
-            })
+            )
+        } else{
+            let item = cart.find(item => item.id === product.id);
+            item.quantity += getQuantityFromSelect(button.dataset.productId)
         }
+    })
         showElement(".added-container", 1000, button.dataset.productId);
         updateLabelQuantity(cart);
         localStorage.setItem('cart', JSON.stringify(cart));
-    })
 });
+
 
 const inputName = document.querySelector(".input-product-name");
 inputName.addEventListener("keyup", () => {
