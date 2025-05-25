@@ -1,11 +1,11 @@
 import {products} from "../../data/products.js";
 import {cart} from "../../data/cart.js";
-import {checkItemPresence, getQuantityFromSelect, showElement, updateLabelQuantity} from "./functions.js";
+import {checkItemPresence, getQuantityFromSelect, searchName, showElement, updateLabelQuantity} from "./functions.js";
 
 updateLabelQuantity(cart);
 products.forEach(product => {
     document.querySelector(".main").innerHTML +=
-    `<div class="product-container">
+    `<div class="product-container" data-product-name="${product.name}">
         <div class="product-image-container">
             <img src="../../${product.image}" alt="${product.name}" class="product-image">
         </div>
@@ -54,3 +54,8 @@ document.querySelectorAll(".add-button").forEach(button => {
         localStorage.setItem('cart', JSON.stringify(cart));
     })
 });
+
+const inputName = document.querySelector(".input-product-name");
+inputName.addEventListener("keyup", () => {
+    searchName(inputName.value);
+})

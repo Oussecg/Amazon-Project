@@ -36,5 +36,14 @@ export function showElement(cla, time, productId){
             }, time)
         }
     })
+}
 
+export function searchName(value){
+    document.querySelectorAll(".product-container").forEach(element => {
+        if (element.dataset.productName.toLowerCase().includes(value.toLowerCase())){
+            element.style.display = "flex";
+        } else {
+            element.style.display = "none";
+        }
+    })
 }
