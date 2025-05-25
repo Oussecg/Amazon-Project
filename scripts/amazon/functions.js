@@ -1,7 +1,6 @@
 export function checkItemPresence(cart, productId){
     let item = cart.find(product => product.id === productId);
     if (item){
-        console.log(getQuantityFromSelect(productId))
         item.quantity += getQuantityFromSelect(productId);
     }
     return item;

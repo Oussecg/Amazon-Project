@@ -1,0 +1,20 @@
+.header{
+    padding-top: 20px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.checkout-logo{
+    height: 35px;
+}
+
+.checkout-label{
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.products-quantity{
+    color: blue;
+    text-decoration: none;
+}

@@ -1,10 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-
-</body>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Title</title>
+        <link rel="stylesheet" href="styles/checkout/general.css">
+        <link rel="stylesheet" href="styles/checkout/style.css">
+        <link rel="stylesheet" href="styles/checkout/header.css">
+    </head>
+    <body>
+        <header class="header">
+            <a href="amazon.html"><img src="images/amazon-logo.png" alt="Amazon Logo" class="checkout-logo"></a>
+            <label class="checkout-label">
+                Checkout(
+                <a class="products-quantity" href="amazon.html">0 items</a>
+                )
+            </label>
+        </header>
+        <main class="main">
+            <article class="checkout-products"></article>
+            <article class="checkout-total"></article>
+        </main>
+        <script src="scripts/checkout/checkout.js" type="module"></script>
+        <script src="scripts/checkout/resolution.js"></script>
+        <script src="scripts/checkout/checkout.js" type="module"></script>
+    </body>
 </html>
