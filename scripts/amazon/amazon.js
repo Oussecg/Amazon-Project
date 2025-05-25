@@ -38,7 +38,7 @@ products.forEach(product => {
 
 document.querySelectorAll(".add-button").forEach(button => {
     button.addEventListener("click", () => {
-        let product = products.find(product => product.id === button.dataset.productId)
+        let product = products.find(product => product.id === button.dataset.productId);
         if (! checkItemPresence(cart, button.dataset.productId)){
             cart.push(
                 {
@@ -46,14 +46,11 @@ document.querySelectorAll(".add-button").forEach(button => {
                     id: product.id
                 }
             )
-        } else{
-            let item = cart.find(item => item.id === product.id);
-            item.quantity += getQuantityFromSelect(button.dataset.productId)
         }
-    })
         showElement(".added-container", 1000, button.dataset.productId);
         updateLabelQuantity(cart);
         localStorage.setItem('cart', JSON.stringify(cart));
+    })
 });
 
 
