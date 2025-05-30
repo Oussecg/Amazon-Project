@@ -12,23 +12,26 @@ export function getDeliveryDate(){
 }
 
 export function updateQuantity(i){
-    const quantityLabel = document.querySelectorAll('.product-quantity')[i];
-    const updateButton = document.querySelectorAll('.update-button')[i];
-    if (updateButton.innerHTML === "Update"){
-        quantityLabel.innerHTML = `<input type="number" value="${cart[i].quantity}" min="1">`
-        const inputQuantity = quantityLabel.querySelector("input");
-        inputQuantity.addEventListener("change", () => {
-            cart[i].quantity = Number(inputQuantity.value);
-        })
-        updateButton.innerHTML = "Save";
-    } else{
-        quantityLabel.innerHTML = cart[i].quantity;
-        updateButton.innerHTML = "Update";
-        localStorage.setItem('cart', JSON.stringify(cart));
-        updateLabelQuantity();
-        loadHTML();
+    i += 1;
+    if (i){
+        i -= 1;
+        const quantityLabel = document.querySelectorAll('.product-quantity')[i];
+        const updateButton = document.querySelectorAll('.update-button')[i];
+        if (updateButton.innerHTML === "Update"){
+            quantityLabel.innerHTML = `<input type="number" value="${cart[i].quantity}" min="1">`
+            const inputQuantity = quantityLabel.querySelector("input");
+            inputQuantity.addEventListener("change", () => {
+                cart[i].quantity = Number(inputQuantity.value);
+            })
+            updateButton.innerHTML = "Save";
+        } else{
+            quantityLabel.innerHTML = cart[i].quantity;
+            updateButton.innerHTML = "Update";
+            localStorage.setItem('cart', JSON.stringify(cart));
+            updateLabelQuantity();
+            loadHTML();
+        }
     }
-
 }
 
 export function deleteItem(i){
@@ -46,14 +49,13 @@ export function loadHTML(){
         const product = products.find(product => product.id === item.id);
         productsContainer.innerHTML +=
         `<div class="product-container">
-            <h3 class="delivery-time">Delivery date: ${getDeliveryDate()}</h3>
             <div class="product-details">
                 <img src="../../${product.image}" alt="${product.name}">
                 <div class="product-info">
                     <h4>${product.name}</h4>
                     <p class="product-price">$${((product.priceCents / 100) * item.quantity).toFixed(2)}</p>
                     <div class="quantity-container">
-                        <p>Quantity:<span class="product-quantity">${item.quantity}</span></p>
+                        <p>Quantity:<span class="product-quantity"> ${item.quantity}</span></p>
                         <button class="update-button" onclick="updateQuantity(${i})">Update</button>
                         <button class="delete-button" onclick="deleteItem(${i})">Delete</button>
                     </div>
