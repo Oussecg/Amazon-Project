@@ -98,3 +98,20 @@
 .product-quantity{
     color: #ff3c00;
 }
+
+.product-delivery-date{
+    margin-bottom: 20px;
+    color: green;
+}
+
+.product-delivery-input{
+    padding: 10px 0;
+    border: none;
+}
+
+.product-delivery-price{
+    font-size: 10px;
+    color: red;
+}
+
+

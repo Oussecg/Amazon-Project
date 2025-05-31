@@ -49,6 +49,7 @@ export function loadHTML(){
         const product = products.find(product => product.id === item.id);
         productsContainer.innerHTML +=
         `<div class="product-container">
+            <h3 class="product-delivery-date">Delivery date: ${product.name}</h3>
             <div class="product-details">
                 <img src="../../${product.image}" alt="${product.name}">
                 <div class="product-info">
@@ -60,8 +61,22 @@ export function loadHTML(){
                         <button class="delete-button" onclick="deleteItem(${i})">Delete</button>
                     </div>
                 </div>
+                <div class="product-dilevery-container">
+                    <h5>Choose a delivery option:</h5>
+                    <select class="product-delivery-input">
+                        <option>Tuesday, June 10</option>
+                        <option>Wednesday, June 4</option>
+                        <option>Monday, June 2</value>
+                    </select>
+                    <span class="product-delivery-price">FREE Shipping</span>
+                </div>
             </div>
         </div>`
+    });
+    document.querySelectorAll(".product-delivery-input").forEach(select => {
+        select.addEventListener("change", () => {
+            
+        })
     })
     if (cart.length === 0) {
         productsContainer.classList.add("empty-cart-container");
