@@ -1,15 +1,10 @@
 import { cart } from '../../data/cart.js'; // at the top if not already
 import { products } from '../../data/products.js';
-import { productsContainer } from './checkout.js';
 
 window.deleteItem = deleteItem;
 window.updateQuantity = updateQuantity;
 window.loadHTML = loadHTML;
 window.updateLabelQuantity = updateLabelQuantity;
-
-export function getDeliveryDate(){
-    return "";
-}
 
 export function updateQuantity(i){
     i += 1;
@@ -44,12 +39,13 @@ export function deleteItem(i){
 }
 
 export function loadHTML(){
+    const productsContainer = document.querySelector('.checkout-products');
     productsContainer.innerHTML = "";
     cart.forEach((item, i) => {
         const product = products.find(product => product.id === item.id);
         productsContainer.innerHTML +=
-        `<div class="product-container">
-            <h3 class="product-delivery-date">Delivery date: ${product.name}</h3>
+            `<div class="product-container">
+            <h3 class="product-delivery-date">Delivery date: ${item.deliveryDate}</h3>
             <div class="product-details">
                 <img src="../../${product.image}" alt="${product.name}">
                 <div class="product-info">
@@ -64,20 +60,16 @@ export function loadHTML(){
                 <div class="product-dilevery-container">
                     <h5>Choose a delivery option:</h5>
                     <select class="product-delivery-input">
-                        <option>Tuesday, June 10</option>
-                        <option>Wednesday, June 4</option>
-                        <option>Monday, June 2</value>
+                        <option>${findTime("1")}</option>
+                        <option>${findTime("2")}</option>
+                        <option>${findTime("3")}</value>
                     </select>
                     <span class="product-delivery-price">FREE Shipping</span>
                 </div>
             </div>
         </div>`
     });
-    document.querySelectorAll(".product-delivery-input").forEach(select => {
-        select.addEventListener("change", () => {
-            
-        })
-    })
+
     if (cart.length === 0) {
         productsContainer.classList.add("empty-cart-container");
         productsContainer.innerHTML = "<a href='http://localhost:63342/Amazon-Project-master/amazon.html' class='empty-cart'>Your cart is empty.</a>";
@@ -87,7 +79,8 @@ export function loadHTML(){
     const totalContainer = document.querySelector((".checkout-total"));
     const price = Number(calculateTotalPrice());
     const tax = Number((price / 10).toFixed(2));
-    const totalPrice = (price + tax).toFixed(2);
+    const deliveryPrice = Number(calculateDeliveryPrice());
+    const totalPrice = (price + tax + deliveryPrice).toFixed(2);
     totalContainer.innerHTML =
     `
     <h3 class="summary-title">Order Summary</h3>
@@ -99,11 +92,25 @@ export function loadHTML(){
         <p>Estimated tax (10%):</p>
         <p>$${tax}</p>
     </div>
+    <div class="delivery-container">
+        <p>Shipping & handling:</p>
+        <p>$${deliveryPrice}</p>
+    </div>
     <div class="summary-total">
         <p>Order total:</p>
         <p>$${totalPrice}</p>
     </div>
-    `
+    `;
+    cart.forEach((item, i) => {
+        const select = document.querySelectorAll(".product-delivery-input")[i];
+        select.addEventListener("change", () => {
+            document.querySelectorAll(".product-delivery-date")[i].innerHTML = `Delivery date: ${select.value}`;
+            item.deliveryDate = select.value;
+            localStorage.setItem('cart', JSON.stringify(cart));
+            loadHTML()
+        })
+    })
+    tt()
 }
 
 export function updateLabelQuantity(){
@@ -122,4 +129,53 @@ export function calculateTotalPrice() {
         total += (product.priceCents / 100) * item.quantity;
     });
     return total.toFixed(2);
+}
+
+export function calculateDeliveryPrice(){
+    let total = 0;
+    cart.forEach(item => {
+        if (item.deliveryDate === findTime("1")){
+            total += 0;
+        } else if (item.deliveryDate === findTime("2")){
+            total += 4.99
+        } else {
+            total += 9.99
+        }
+    });
+    return total.toFixed(2);
+}
+
+export function findTime(value){
+    const monthNames = [
+        "January", "February", "March", "April", "May", "June",
+        "July", "August", "September", "October", "November", "December"
+    ];
+    let optionDate= new Date();
+    if (value === "1"){
+        optionDate.setDate(optionDate.getDate() + 30);
+    } else if (value === "2"){
+        optionDate.setDate(optionDate.getDate() + 10);
+
+    } else if (value === "3"){
+        optionDate.setDate(optionDate.getDate() + 4);
+    }
+    return `${monthNames[optionDate.getMonth()]} ${optionDate.getDate()}`
+}
+
+export function tt(){
+    const selects = document.querySelectorAll(".product-delivery-input");
+    document.querySelectorAll(".product-delivery-price").forEach((select, i) => {
+        if (cart[i].deliveryDate === findTime("1") ){
+            select.innerHTML = "FREE Shipping";
+            selects[i].value = findTime("1");
+        } else if (cart[i].deliveryDate === findTime("2") ){
+            select.innerHTML = "$4.99 - Shipping";
+            selects[i].value = findTime("2");
+        } else if (cart[i].deliveryDate === findTime("3")){
+            select.innerHTML = "$9.99 - Shipping";
+            selects[i].value = findTime("3");
+        }
+    })
+
+
 }

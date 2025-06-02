@@ -1,6 +1,8 @@
 import {products} from "../../data/products.js";
 import {cart} from "../../data/cart.js";
 import {checkItemPresence, getQuantityFromSelect, searchName, showElement, updateLabelQuantity} from "./functions.js";
+import {findTime} from "../checkout/functions1.js";
+
 
 const main = document.querySelector(".main");
 updateLabelQuantity(cart);
@@ -43,7 +45,8 @@ document.querySelectorAll(".add-button").forEach(button => {
             cart.push(
                 {
                     quantity: getQuantityFromSelect(button.dataset.productId),
-                    id: product.id
+                    id: product.id,
+                    deliveryDate: findTime("1")
                 }
             )
         }

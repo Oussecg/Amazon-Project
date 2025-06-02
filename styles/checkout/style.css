@@ -81,7 +81,7 @@
     margin-bottom: 15px;
 }
 
-.summary-price, .summary-tax, .summary-total{
+.summary-price, .summary-tax, .summary-total, .delivery-container{
     display: flex;
     justify-content: space-between;
     margin-bottom: 10px;
@@ -110,7 +110,7 @@
 }
 
 .product-delivery-price{
-    font-size: 10px;
+    font-size: 15px;
     color: red;
 }
 

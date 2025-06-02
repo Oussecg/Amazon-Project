@@ -1,5 +1,4 @@
-import {loadHTML, updateLabelQuantity} from "./functions.js";
+import {loadHTML, updateLabelQuantity} from "./functions1.js";
 
-export const productsContainer = document.querySelector('.checkout-products');
 updateLabelQuantity()
 loadHTML();
