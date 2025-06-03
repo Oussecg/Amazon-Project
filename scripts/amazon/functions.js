@@ -21,8 +21,6 @@ export function updateLabelQuantity(cart){
     cart.forEach(item => {
         quantity += item.quantity;
     });
-    console.log(cart);
-    console.log(quantity);
     document.querySelector(".cart-quantity").innerHTML = quantity;
 }
 
