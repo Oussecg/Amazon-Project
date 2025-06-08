@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+
+
+<html lang="en">
+
+
+<head>
+
+
+    <meta charset="UTF-8">
+
+
+    <title>DSL Router Dashboard</title>
+
+
+    <style>
+
+
+        body {
+
+
+            margin: 0;
+
+
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+
+            background-color: #f0f2f5;
+
+
+        }
+
+
+
+
+
+        .topnav {
+
+
+            background-color: #1a1a2e;
+
+
+            color: #fff;
+
+
+            padding: 15px 30px;
+
+
+            font-size: 22px;
+
+
+            font-weight: bold;
+
+
+            display: flex;
+
+
+            align-items: center;
+
+
+        }
+
+
+
+
+
+        .menu {
+
+
+            display: flex;
+
+
+            background-color: #16213e;
+
+
+            padding: 10px 30px;
+
+
+        }
+
+
+
+
+
+        .menu div {
+
+
+            margin-right: 20px;
+
+
+            color: #fff;
+
+
+            cursor: pointer;
+
+
+            padding: 8px 15px;
+
+
+            border-radius: 5px;
+
+
+            transition: background 0.3s;
+
+
+        }
+
+
+
+
+
+        .menu div:hover, .menu div.active {
+
+
+            background-color: #0f3460;
+
+
+        }
+
+
+
+
+
+        .container {
+
+
+            display: flex;
+
+
+            padding: 20px;
+
+
+        }
+
+
+
+
+
+        .sidebar {
+
+
+            width: 220px;
+
+
+            background: #fff;
+
+
+            border-radius: 8px;
+
+
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+
+
+            padding: 20px;
+
+
+            margin-right: 20px;
+
+
+        }
+
+
+
+
+
+        .sidebar div {
+
+
+            margin-bottom: 15px;
+
+
+            cursor: pointer;
+
+
+        }
+
+
+
+
+
+        .sidebar div:hover {
+
+
+            font-weight: bold;
+
+
+        }
+
+
+
+
+
+        .content {
+
+
+            flex-grow: 1;
+
+
+            background: #fff;
+
+
+            border-radius: 8px;
+
+
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+
+
+            padding: 20px;
+
+
+        }
+
+
+
+
+
+        .section {
+
+
+            margin-bottom: 30px;
+
+
+        }
+
+
+
+
+
+        .section-header {
+
+
+            font-size: 18px;
+
+
+            margin-bottom: 10px;
+
+
+            color: #333;
+
+
+            border-bottom: 2px solid #eee;
+
+
+            padding-bottom: 5px;
+
+
+        }
+
+
+
+
+
+        table {
+
+
+            width: 100%;
+
+
+            border-collapse: collapse;
+
+
+        }
+
+
+
+
+
+        td {
+
+
+            padding: 8px 12px;
+
+
+            border-bottom: 1px solid #eee;
+
+
+        }
+
+
+
+
+
+        td.label {
+
+
+            font-weight: bold;
+
+
+            color: #555;
+
+
+        }
+
+
+    </style>
+
+
+</head>
+
+
+<body>
+
+
+
+
+
+<div class="topnav">TT DSL Router</div>
+
+
+<div class="menu">
+
+
+    <div class="menu-btn active" data-page="status">Statut</div>
+
+
+    <div class="menu-btn" data-page="config">Configuration</div>
+
+
+    <div class="menu-btn" data-page="advanced">Avancé</div>
+
+
+    <div class="menu-btn" data-page="service">Service</div>
+
+
+    <div class="menu-btn" data-page="firewall">Pare-Feu</div>
+
+
+    <div class="menu-btn" data-page="maintenance">Maintenance</div>
+
+
+</div>
+
+
+
+
+
+<div class="container">
+
+
+    <div class="sidebar">
+
+
+        <div>• Device info</div>
+
+
+        <div>› DSL</div>
+
+
+        <div>› Lan Info</div>
+
+
+        <div>› VoIP</div>
+
+
+        <br>
+
+
+        <div><button onclick="alert('Statistiques clicked')">Statistiques</button></div>
+
+
+    </div>
+
+
+
+
+
+    <div class="content" id="page-content">
+
+
+        <div class="section">
+
+
+            <div class="section-header">Système</div>
+
+
+            <table>
+
+
+                <tr><td class="label">Alias</td><td>DSL Router VN020-F3W(TT)</td></tr>
+
+
+                <tr><td class="label">Durée d'activité</td><td>4j 21h 19m</td></tr>
+
+
+                <tr><td class="label">Date / heure</td><td>Sam. Juin 8 12:58:34 2025</td></tr>
+
+
+                <tr><td class="label">Firmware</td><td>V1.0.2_2021</td></tr>
+
+
+                <tr><td class="label">Date Firmware</td><td>28 Oct 2021</td></tr>
+
+
+                <tr><td class="label">Numéro de Série</td><td>31931003002699</td></tr>
+
+
+            </table>
+
+
+        </div>
+
+
+        <div class="section">
+
+
+            <div class="section-header">DSL</div>
+
+
+            <table>
+
+
+                <tr><td class="label">Modulation Active</td><td>ADSL2 AnnexA</td></tr>
+
+
+                <tr><td class="label">Débit montant</td><td>891 kbps</td></tr>
+
+
+                <tr><td class="label">Débit descendant</td><td>6696 kbps</td></tr>
+
+
+                <tr><td class="label">Max montant</td><td>1065 kbps</td></tr>
+
+
+                <tr><td class="label">Max descendant</td><td>9844 kbps</td></tr>
+
+
+                <tr><td class="label">Temps Sync</td><td>2j 4:45:5</td></tr>
+
+
+            </table>
+
+
+        </div>
+
+
+    </div>
+
+
+</div>
+
+
+
+
+
+<script>
+
+
+    const pages = {
+
+
+        status: `
+
+
+      <div class="section">
+
+
+        <div class="section-header">Système</div>
+
+
+        <table>
+
+
+          <tr><td class="label">Alias</td><td>DSL Router VN020-F3W(TT)</td></tr>
+
+
+          <tr><td class="label">Durée d'activité</td><td>4j 21h 19m</td></tr>
+
+
+          <tr><td class="label">Date / heure</td><td>Sam. Juin 8 12:58:34 2025</td></tr>
+
+
+          <tr><td class="label">Firmware</td><td>V1.0.2_2021</td></tr>
+
+
+          <tr><td class="label">Date Firmware</td><td>28 Oct 2021</td></tr>
+
+
+          <tr><td class="label">Numéro de Série</td><td>31931003002699</td></tr>
+
+
+        </table>
+
+
+      </div>
+
+
+      <div class="section">
+
+
+        <div class="section-header">DSL</div>
+
+
+        <table>
+
+
+          <tr><td class="label">Modulation Active</td><td>ADSL2 AnnexA</td></tr>
+
+
+          <tr><td class="label">Débit montant</td><td>891 kbps</td></tr>
+
+
+          <tr><td class="label">Débit descendant</td><td>6696 kbps</td></tr>
+
+
+          <tr><td class="label">Max montant</td><td>1065 kbps</td></tr>
+
+
+          <tr><td class="label">Max descendant</td><td>9844 kbps</td></tr>
+
+
+          <tr><td class="label">Temps Sync</td><td>2j 4:45:5</td></tr>
+
+
+        </table>
+
+
+      </div>
+
+
+    `,
+
+
+        config: '<h2>Configuration</h2><p>Paramètres de configuration à venir...</p>',
+
+
+        advanced: '<h2>Avancé</h2><p>Options avancées en cours de développement...</p>',
+
+
+        service: '<h2>Service</h2><p>Liste des services réseau...</p>',
+
+
+        firewall: '<h2>Pare-Feu</h2><p>Règles de sécurité...</p>',
+
+
+        maintenance: '<h2>Maintenance</h2><p>Outils de maintenance système...</p>'
+
+
+    };
+
+
+
+
+
+    document.querySelectorAll('.menu-btn').forEach(btn => {
+
+
+        btn.addEventListener('click', () => {
+
+
+            document.querySelectorAll('.menu-btn').forEach(b => b.classList.remove('active'));
+
+
+            btn.classList.add('active');
+
+
+            const page = btn.getAttribute('data-page');
+
+
+            document.getElementById('page-content').innerHTML = pages[page];
+
+
+        });
+
+
+    });
+
+
+</script>
+
+
+Add commentMore actions
+
+
+</body>
+
+
+</html>
